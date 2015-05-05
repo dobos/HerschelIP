@@ -1,6 +1,6 @@
 function [A, B, C, D] = h_loadobs( file )
 
-    dir = '\\qso\public\everebelyi\FITS\pacs_photo\';
+    dir = '/Users/Erika/WORK/HerschelPSC/FITS/pacsphoto/';
     
     A = h_loadfits(strcat(dir, file, '_js_blue2.fits'));
     B = h_loadfits(strcat(dir, file, '_js_red.fits'));

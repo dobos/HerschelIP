@@ -37,7 +37,7 @@ function R = h_imregister(Images)
         [M, XX] = imwarp(B.Mask, tform, 'OutputView', XR);
         M = imcrop(M, [0 0 A_size(2) A_size(1)]); 
 
-        R(i) = struct('Image', X, 'Mask', M, 'WCS', A.WCS);
+        R(i) = struct('Image', X, 'Mask', M, 'WCS', A.WCS, 'R', B.R, 'G', B.G, 'B', B.B);
     end
     
 end
