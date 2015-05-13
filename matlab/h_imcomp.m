@@ -14,8 +14,8 @@ function R = h_imcomp(Images)
         immax = max(max(Images(i).Image));
         
         for c = 1:3
-            gmin = asinh(Images(i).Clip(c) * Images(i).Gamma(c) * immin);
-            gmax = asinh(Images(i).Clip(c) * Images(i).Gamma(c) * immax);
+            gmin = Images(i).Clip(c) * asinh(Images(i).Gamma(c) * immin);
+            gmax = Images(i).Clip(c) * asinh(Images(i).Gamma(c) * immax);
             img(:,:,c) = Images(i).Mask .* (img(:,:,c) + Images(i).Color(c) * (asinh(Images(i).Gamma(c) * Images(i).Image) - gmin) / (gmax - gmin));
         end
         

@@ -16,14 +16,14 @@ function h_run(obs)
     RC.Gamma = [5, 3, 3];
     RD.Gamma = [8, 8, 8];
     
-    RA.Clip = [0.7, 0.7, 0.7];
+    RA.Clip = [0.9, 0.9, 0.9];
     RB.Clip = [0.85, 0.85, 0.85];
-    RC.Clip = [1, 0.5, 0.5];
-    RD.Clip = [1, 1, 1];
+    RC.Clip = [1, 0.9, 0.9];
+    RD.Clip = [0.9, 0.9, 0.9];
 
     comp=h_imcomp([RA, RB, RC, RD]);
     imshow(comp.Image);
-    figure;
+    %figure;
     %imhist(comp.Image(:,:,1));
     imwrite(comp.Image, 'test.png');
 end
