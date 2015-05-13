@@ -1,5 +1,5 @@
 function [A, B, C, D] = h_loadobs( file )
-    dir = '/Users/Erika/WORK/HerschelPSC/FITS/pacsphoto/';
+    dir = '//blackhole/data/Raid6_2/vo/Herschel/FITS/pacs_photo/';
 
 if ~isempty(strfind(file,'level25')) 
     FileName=strcat(dir, file, '_js_blue1.fits');

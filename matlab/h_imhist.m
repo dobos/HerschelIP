@@ -1,8 +1,10 @@
 function [counts,x] = h_imhist(I)
 
-[counts,x] = imhist(I.Image .* I.Mask);
-counts(1) = 0;
-plot(x,counts);
-
+    %im = I.Image .* I.Mask;
+    im = I.Image(I.Mask);
+        
+    % calculate histogram
+    [counts, x] = hist(im, 1024);
+    
 end
 

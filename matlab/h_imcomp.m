@@ -10,12 +10,15 @@ function R = h_imcomp(Images)
     mask = ones(imsz);
     
     for i = 1:items
-        %img(:,:,1) = img(:,:,1) + Images(i).R * Images(i).Image;
-        %img(:,:,2) = img(:,:,2) + Images(i).G * Images(i).Image;
-        %img(:,:,3) = img(:,:,3) + Images(i).B * Images(i).Image;
-        for color = 1:3
-            img(:,:,color) = img(:,:,color) + Images(i).Color(color) * Images(i).Image;
+        immin = min(min(Images(i).Image));
+        immax = max(max(Images(i).Image));
+        
+        for c = 1:3
+            gmin = asinh(Images(i).Clip(c) * Images(i).Gamma(c) * immin);
+            gmax = asinh(Images(i).Clip(c) * Images(i).Gamma(c) * immax);
+            img(:,:,c) = Images(i).Mask .* (img(:,:,c) + Images(i).Color(c) * (asinh(Images(i).Gamma(c) * Images(i).Image) - gmin) / (gmax - gmin));
         end
+        
         mask = mask & Images(i).Mask;
     end
     
